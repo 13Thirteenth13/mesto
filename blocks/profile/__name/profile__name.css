@@ -5,7 +5,19 @@
   font-size: 42px;
   line-height: 48px;
   color: #ffffff;
-  margin: 0 0 16px;
-  order: -1;
-  max-width: 90%;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__name {
+    text-align: center;
+    grid-column: 2;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+  }
 }

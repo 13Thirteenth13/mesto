@@ -7,3 +7,16 @@
   grid-auto-rows: min-content;
   gap: 20px 17px;
 }
+
+@media screen and (max-width: 980px) {
+  .elements__cards {
+   grid-template-columns: repeat(2, 1fr);
+   justify-items: center;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .elements__cards {
+   grid-template-columns: minmax(282px, 1fr);
+  }
+}

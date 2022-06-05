@@ -1,5 +1,9 @@
 .elements {
-  max-width: 880px;
-  margin: 0 auto;
   padding: 50px 0 66px;
+}
+
+@media screen and (max-width: 480px) {
+  .elements {
+    padding: 36px 0 50px;
+  }
 }
