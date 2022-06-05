@@ -12,10 +12,10 @@
   line-height: 21.78px;
   text-align: center;
   color: #fff;
-  transition: 0.3s linear;
 }
 
 .popup__submit-button:hover {
+  transition: 0.3s linear;
   opacity: 0.8;
 }
 

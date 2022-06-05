@@ -10,10 +10,10 @@
   cursor: pointer;
   flex-shrink: 0;
   margin-left: auto;
-  transition: 0.3s linear;
 }
 
 .profile__add-button:hover {
+  transition: 0.3s linear;
   opacity: 0.6;
 }
 

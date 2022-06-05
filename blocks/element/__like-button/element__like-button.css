@@ -8,9 +8,9 @@
   height: 19px;
   cursor: pointer;
   flex-shrink: 0;
-  transition: 0.3s linear;
 }
 
 .element__like-button:hover {
+  transition: 0.3s linear;
   background-image: url(../../../images/like-button_active.svg);
 }
