@@ -10,6 +10,11 @@
   cursor: pointer;
   flex-shrink: 0;
   margin-left: auto;
+  transition: 0.3s linear;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 768px) {
