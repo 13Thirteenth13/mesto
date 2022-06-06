@@ -5,8 +5,11 @@
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   padding: 34px 36px 37px;
-  position: fixed;
   box-sizing: border-box;
+  position: relative;
+  /* 1st review: Надеюсь допустимо что не удалил, а изменил значение с fixed с relative,
+  тк элемент popup__close-button абсолютно позиционируется относительно popup__container.
+  Сам popup__container флекс элемент блока popup. */
   display: flex;
   flex-direction: column;
   align-items: center;

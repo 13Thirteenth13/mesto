@@ -11,6 +11,6 @@
 }
 
 .element__like-button:hover {
-  transition: 0.3s linear;
-  background-image: url(../../../images/like-button_active.svg);
+  transition: opacity 0.3s linear;
+  opacity: 0.8;
 }

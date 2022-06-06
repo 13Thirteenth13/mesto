@@ -12,18 +12,17 @@
 }
 
 .profile__edit-button:hover {
-  transition: 0.3s linear;
+  transition: opacity 0.3s linear;
   opacity: 0.6;
 }
 
 @media screen and (max-width: 768px) {
   .profile__edit-button {
-    grid-row: 1;
     grid-column: 3;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 680px) {
   .profile__edit-button {
     height: 18px;
     width: 18px;
