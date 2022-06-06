@@ -11,12 +11,12 @@
 * CSS
     * Flexbox
     * Grid Layout
-    * Адаптивная верстка с использованием медиа-запросов.
-    * Позиционирование блоков и элементо
+    * Адаптивная верстка с использованием медиа-запросов
+    * Позиционирование блоков и элементов
     * Псевдоклассы
 * JavaScript
 * БЭМ Nested
 * Git
-
-* [Макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
-* [Проект на Github Pages](https://13thirteenth13.github.io/mesto/index.html)
+### Ссылки:
+  * [Макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+  * [Проект на Github Pages](https://13thirteenth13.github.io/mesto/index.html)
