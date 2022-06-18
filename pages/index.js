@@ -21,19 +21,19 @@ const popUpAddButtonOpen = document.querySelector('.profile__add-button');
 //переключатель поп апа
 function popUpToggle(modalPopUp) {
   modalPopUp.classList.toggle('popup_opened');
-}
+};
 //данные профиля в поп ап редактирования профиля
 function profileDataValue() {
   popUpEditInputName.value = profileName.textContent;
   popUpEditInputDescription.value = profileDescription.textContent;
-}
+};
 //обработчик события сабмита поп апа редактирования профиля
 function formSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = popUpInputName.value;
   profileDescription.textContent = popUpInputDescription.value;
   popUpToggle(popUpEditProfile);
-}
+};
 //листенеры
 profileButtonEdit.addEventListener('click', () => {
   popUpToggle(popUpEdit);
@@ -109,6 +109,7 @@ function addCardElement(cardName, cardLink) {
 
   cardHeading.textContent = cardName;
   cardImage.src = cardLink;
+  cardImage.alt = cardName;
   cardsContainer.prepend(cardElement);
 
   //листенеры
@@ -124,6 +125,7 @@ function addCardElement(cardName, cardLink) {
     popUpToggle(popUpView);
     PopupViewImage.src = cardImage.src;
     popUpViewFigcaption.textContent = cardHeading.textContent;
+    PopupViewImage.alt = cardHeading.textContent;
     popUpViewButtonClose.onclick = () => popUpToggle(popUpView);
   };
 
