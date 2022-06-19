@@ -90,7 +90,7 @@ const popUpView = document.querySelector('.popup_type_view-image');
 //название изображения поп апа просмотра
 const popUpViewFigcaption = popUpView.querySelector('.popup__figcaption');
 //изображение поп апа просмотра
-const PopupViewImage = popUpView.querySelector('.popup__image');
+const popUpViewImage = popUpView.querySelector('.popup__image');
 //кнопка закрытия поп апа просмотра
 const popUpViewButtonClose = popUpView.querySelector('.popup__close-button');
 
@@ -123,9 +123,9 @@ function addCardElement(cardName, cardLink) {
   //функция поп апа просмотра
   function openPopUpView() {
     popUpToggle(popUpView);
-    PopupViewImage.src = cardImage.src;
+    popUpViewImage.src = cardImage.src;
     popUpViewFigcaption.textContent = cardHeading.textContent;
-    PopupViewImage.alt = cardHeading.textContent;
+    popUpViewImage.alt = cardHeading.textContent;
     popUpViewButtonClose.onclick = () => popUpToggle(popUpView);
   };
 

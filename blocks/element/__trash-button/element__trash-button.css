@@ -11,10 +11,12 @@
   top: 20px;
   right: 20px;
   border-radius: 4px;
-  box-shadow:0 0 3px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
 }
 
-.element__trash-button:hover {
-  transition: opacity 0.3s linear;
-  opacity: 0.6;
+@media (hover: hover) {
+  .element__trash-button:hover {
+    transition: opacity 0.3s linear;
+    opacity: 0.6;
+  }
 }

@@ -11,9 +11,11 @@
   grid-column: 2;
 }
 
-.profile__edit-button:hover {
-  transition: opacity 0.3s linear;
-  opacity: 0.6;
+@media (hover: hover) {
+  .profile__edit-button:hover {
+    transition: opacity 0.3s linear;
+    opacity: 0.6;
+  }
 }
 
 @media screen and (max-width: 768px) {

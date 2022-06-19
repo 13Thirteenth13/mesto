@@ -16,9 +16,11 @@
   color: #fff;
 }
 
-.popup__submit-button:hover {
-  transition: opacity 0.3s linear;
-  opacity: 0.8;
+@media (hover: hover) {
+  .popup__submit-button:hover {
+    transition: opacity 0.3s linear;
+    opacity: 0.8;
+  }
 }
 
 @media screen and (max-width: 425px) {
