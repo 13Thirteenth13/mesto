@@ -4,7 +4,6 @@
   margin: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: min-content;
   gap: 20px 17px;
 }
 
@@ -18,5 +17,6 @@
 @media screen and (max-width: 680px) {
   .elements__cards {
    grid-template-columns: minmax(282px, 1fr);
+   grid-template-rows: 361px;
   }
 }
