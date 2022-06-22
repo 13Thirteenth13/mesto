@@ -57,7 +57,7 @@ function profileDataValue() {
   popUpEditInputDescription.value = profileDescription.textContent;
 };
 //обработчик события сабмита поп апа редактирования профиля
-function profileFormSubmit(evt) {
+function submitProfileForm(evt) {
   evt.preventDefault();
   profileName.textContent = popUpEditInputName.value;
   profileDescription.textContent = popUpEditInputDescription.value;
@@ -71,7 +71,7 @@ profileButtonEdit.addEventListener('click', () => {
 popUpEditButtonClose.addEventListener('click', () => {
   popUpToggle(popUpEdit);
 });
-popUpEditForm.addEventListener('submit', profileFormSubmit);
+popUpEditForm.addEventListener('submit', submitProfileForm);
 
 //поп ап добавление карточки
 //создание новой карточки
@@ -107,9 +107,7 @@ function createCard(cardName, cardLink) {
     popUpViewFigcaption.textContent = cardHeading.textContent;
     popUpViewImage.alt = cardHeading.textContent;
   };
-
-  // листенеры
-  popUpViewButtonClose.onclick = () => popUpToggle(popUpView);
+  // листенер
   cardImage.addEventListener('click', openPopUpView);
 
   return cardElement;
@@ -142,3 +140,4 @@ popUpAddForm.addEventListener('submit', (evt) => {
   link.value = '';
   popUpToggle(popUpAdd);
 });
+popUpViewButtonClose.onclick = () => popUpToggle(popUpView);
