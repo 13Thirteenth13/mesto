@@ -1,7 +1,8 @@
+//Попапы
+const popUpAll = document.querySelectorAll('.popup');
+
 //поп ап редактирование профиля
 const popUpEdit = document.querySelector('.popup_type_edit-profile');
-//кнопка закрытия поп апа редактирования профиля
-const popUpEditButtonClose = popUpEdit.querySelector('.popup__close-button');
 //форма поп апа редактирования профиля
 const popUpEditForm = popUpEdit.querySelector('.popup__form');
 //инпуты формы поп апа редактирования профиля
@@ -21,8 +22,6 @@ const popUpAddButtonOpen = document.querySelector('.profile__add-button');
 
 //поп ап добавление карточки
 const popUpAdd = document.querySelector('.popup_type_new-element');
-//кнопка закрытия поп апа добавления карточки
-const popupAddButtonClose = popUpAdd.querySelector('.popup__close-button');
 //форма поп апа добавления карточки
 const popUpAddForm = popUpAdd.querySelector('.popup__form');
 //инпуты формы поп апа добавления карточки
@@ -42,13 +41,35 @@ const popUpView = document.querySelector('.popup_type_view-image');
 const popUpViewFigcaption = popUpView.querySelector('.popup__figcaption');
 //изображение поп апа просмотра
 const popUpViewImage = popUpView.querySelector('.popup__image');
-//кнопка закрытия поп апа просмотра
-const popUpViewButtonClose = popUpView.querySelector('.popup__close-button');
 
-//переключатель поп апа
-function popUpToggle(modalPopUp) {
-  modalPopUp.classList.toggle('popup_opened');
-};
+//открытие поп апа
+function openPopUp(popUp) {
+  popUp.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopUpEsc);
+}
+//закрытие поп апа
+function closePopUp(popUp) {
+  popUp.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopUpEsc);
+}
+//закрытие поп апа клавишей Esc
+function closePopUpEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopUp = document.querySelector('.popup_opened');
+    closePopUp(openedPopUp);
+  }
+}
+//закрытие поп апа нажатием на кнопку закрытия или оверлей
+popUpAll.forEach((popUp) => {
+  popUp.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopUp(popUp);
+    }
+    if (evt.target.classList.contains('popup__close-button')) {
+      closePopUp(popUp);
+    }
+  });
+});
 
 //поп ап редактирование профиля
 //данные профиля в поп ап редактирования профиля
@@ -61,15 +82,12 @@ function submitProfileForm(evt) {
   evt.preventDefault();
   profileName.textContent = popUpEditInputName.value;
   profileDescription.textContent = popUpEditInputDescription.value;
-  popUpToggle(popUpEdit);
+  closePopUp(popUpEdit);
 };
 //листенеры
 profileButtonEdit.addEventListener('click', () => {
-  popUpToggle(popUpEdit);
+  openPopUp(popUpEdit);
   profileDataValue();
-});
-popUpEditButtonClose.addEventListener('click', () => {
-  popUpToggle(popUpEdit);
 });
 popUpEditForm.addEventListener('submit', submitProfileForm);
 
@@ -102,7 +120,7 @@ function createCard(cardName, cardLink) {
   //поп ап просмотр изображения
   //функция поп апа просмотра
   function openPopUpView() {
-    popUpToggle(popUpView);
+    openPopUp(popUpView);
     popUpViewImage.src = cardImage.src;
     popUpViewFigcaption.textContent = cardHeading.textContent;
     popUpViewImage.alt = cardHeading.textContent;
@@ -125,19 +143,15 @@ initialCards.forEach(uploadInitialCards);
 
 //листенеры
 popUpAddButtonOpen.addEventListener('click', () => {
-  popUpToggle(popUpAdd);
-});
-popupAddButtonClose.addEventListener('click', () => {
-  popUpToggle(popUpAdd);
+  openPopUp(popUpAdd);
 });
 popUpAddForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  const title = popUpAddInputTitle;
-  const link = popUpAddLinkInputLink;
-  const newCard = createCard(title.value, link.value);
+  const cardName = popUpAddInputTitle;
+  const cardLink = popUpAddLinkInputLink;
+  const newCard = createCard(cardName.value, cardLink.value);
   addCardElement(newCard);
-  title.value = '';
-  link.value = '';
-  popUpToggle(popUpAdd);
+  cardName.value = '';
+  cardLink.value = '';
+  closePopUp(popUpAdd);
 });
-popUpViewButtonClose.onclick = () => popUpToggle(popUpView);
