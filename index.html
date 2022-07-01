@@ -7,6 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body class="page">
@@ -23,7 +27,9 @@
       </div>
       <button class="profile__add-button" type="button" aria-label="Добавить новую карточку"></button>
     </section>
+
     <section class="elements"></section>
+
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -35,8 +41,12 @@
       <h3 class="popup__heading">Редактировать профиль</h3>
       <form class="popup__form" name="edit-form">
         <fieldset class="popup__fieldset">
-          <input class="popup__input" name="profile-name" id="name" type="text" placeholder="Имя">
-          <input class="popup__input" name="profile-description" id="description" type="text" placeholder="О себе">
+          <input class="popup__input" name="profile-name" id="name" type="text" placeholder="Имя" minlength="2"
+            maxlength="40" required>
+          <span class="popup__error name-error"></span>
+          <input class="popup__input" name="profile-description" id="description" type="text" placeholder="О себе"
+            minlength="2" maxlength="200" required>
+          <span class="popup__error description-error"></span>
           <button class="popup__submit-button" type="submit">
             Сохранить
           </button>
@@ -50,8 +60,11 @@
       <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__heading">Новое место</h2>
       <form class="popup__form" name="add-form">
-        <input class="popup__input" name="title" type="text" id="title" placeholder="Название">
-        <input class="popup__input" name="link" id="link" type="text" placeholder="Ссылка на картинку">
+        <input class="popup__input" name="title" type="text" id="title" placeholder="Название" minlength="2"
+          maxlength="30" required>
+        <span class="popup__error title-error"></span>
+        <input class="popup__input" name="link" id="link" type="url" placeholder="Ссылка на картинку" required>
+        <span class="popup__error link-error"></span>
         <button class="popup__submit-button" type="submit">Создать</button>
       </form>
     </div>
@@ -79,7 +92,8 @@
   </template>
 
   <script src="./scripts/initial-cards.js"></script>
-  <script src="./scripts/script.js"></script>
+  <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

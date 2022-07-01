@@ -46,28 +46,28 @@ const popUpViewImage = popUpView.querySelector('.popup__image');
 function openPopUp(popUp) {
   popUp.classList.add('popup_opened');
   document.addEventListener('keydown', closePopUpEsc);
-}
+};
 //закрытие поп апа
 function closePopUp(popUp) {
   popUp.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopUpEsc);
-}
+};
 //закрытие поп апа клавишей Esc
 function closePopUpEsc(evt) {
   if (evt.key === 'Escape') {
     const openedPopUp = document.querySelector('.popup_opened');
     closePopUp(openedPopUp);
-  }
-}
+  };
+};
 //закрытие поп апа нажатием на кнопку закрытия или оверлей
 popUpAll.forEach((popUp) => {
   popUp.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
       closePopUp(popUp);
-    }
+    };
     if (evt.target.classList.contains('popup__close-button')) {
       closePopUp(popUp);
-    }
+    };
   });
 });
 
