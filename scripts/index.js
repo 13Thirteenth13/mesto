@@ -24,6 +24,8 @@ const popUpAddButtonOpen = document.querySelector('.profile__add-button');
 const popUpAdd = document.querySelector('.popup_type_new-element');
 //форма поп апа добавления карточки
 const popUpAddForm = popUpAdd.querySelector('.popup__form');
+//кнопка сабмита поп апа добавления карточки
+const popUpAddButtonSubmit = document.querySelector('.popup__submit-button');
 //инпуты формы поп апа добавления карточки
 const popUpAddInputTitle = popUpAddForm.querySelector('#title');
 const popUpAddLinkInputLink = popUpAddForm.querySelector('#link');
@@ -32,6 +34,7 @@ const popUpAddLinkInputLink = popUpAddForm.querySelector('#link');
 const elementsSection = document.querySelector('.elements');
 const elementsContainer = elementsSection.insertAdjacentHTML('afterbegin', `<ul class="elements__cards"></ul>`);
 const cardsContainer = elementsSection.querySelector('.elements__cards');
+
 //темплейт карточка
 const cardTemplate = document.querySelector('.element-template').content;
 
@@ -73,7 +76,7 @@ popUpAll.forEach((popUp) => {
 
 //поп ап редактирование профиля
 //данные профиля в поп ап редактирования профиля
-function profileDataValue() {
+function setProfileData() {
   popUpEditInputName.value = profileName.textContent;
   popUpEditInputDescription.value = profileDescription.textContent;
 };
@@ -87,7 +90,7 @@ function submitProfileForm(evt) {
 //листенеры
 profileButtonEdit.addEventListener('click', () => {
   openPopUp(popUpEdit);
-  profileDataValue();
+  setProfileData;
 });
 popUpEditForm.addEventListener('submit', submitProfileForm);
 
@@ -151,7 +154,12 @@ popUpAddForm.addEventListener('submit', (evt) => {
   const cardLink = popUpAddLinkInputLink;
   const newCard = createCard(cardName.value, cardLink.value);
   addCardElement(newCard);
-  cardName.value = '';
-  cardLink.value = '';
   closePopUp(popUpAdd);
+  popUpAddForm.reset();
+  // не работает
+
+  /* disableSubmitButton(popUpAddButtonSubmit, validSet); */
+
+  /* popUpAddButtonSubmit.setAttribute('disabled', 'disabled');
+  popUpAddButtonSubmit.classList.add('popup__submit-button_disabled'); */
 });
