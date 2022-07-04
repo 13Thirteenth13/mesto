@@ -12,20 +12,18 @@ const popUpEditInputDescription = popUpEditForm.querySelector('#description');
 //секция profile
 const profile = document.querySelector('.profile');
 //кнопка поп ап редактирования профиля
-const profileButtonEdit = profile.querySelector('.profile__edit-button');
+const buttonProfileEdit = profile.querySelector('.profile__edit-button');
 //имя профиля
 const profileName = profile.querySelector('.profile__name');
 //описание профиля
 const profileDescription = profile.querySelector('.profile__description');
 //кнопка поп ап добавление новой карточки
-const popUpAddButtonOpen = document.querySelector('.profile__add-button');
+const buttonOpenPopUpAdd = document.querySelector('.profile__add-button');
 
 //поп ап добавление карточки
 const popUpAdd = document.querySelector('.popup_type_new-element');
 //форма поп апа добавления карточки
 const popUpAddForm = popUpAdd.querySelector('.popup__form');
-//кнопка сабмита поп апа добавления карточки
-const popUpAddButtonSubmit = document.querySelector('.popup__submit-button');
 //инпуты формы поп апа добавления карточки
 const popUpAddInputTitle = popUpAddForm.querySelector('#title');
 const popUpAddLinkInputLink = popUpAddForm.querySelector('#link');
@@ -88,9 +86,9 @@ function submitProfileForm(evt) {
   closePopUp(popUpEdit);
 };
 //листенеры
-profileButtonEdit.addEventListener('click', () => {
+buttonProfileEdit.addEventListener('click', () => {
   openPopUp(popUpEdit);
-  setProfileData;
+  setProfileData();
 });
 popUpEditForm.addEventListener('submit', submitProfileForm);
 
@@ -104,19 +102,19 @@ function createCard(cardName, cardLink) {
   //заголовок карточки
   const cardHeading = cardElement.querySelector('.element__heading');
   //кнопка лайк карточки
-  const cardLikeButton = cardElement.querySelector('.element__like-button');
+  const buttonCardLike = cardElement.querySelector('.element__like-button');
   //кнопка удаления карточки
-  const cardTrashButton = cardElement.querySelector('.element__trash-button');
+  const buttonCardTrash = cardElement.querySelector('.element__trash-button');
 
   cardHeading.textContent = cardName;
   cardImage.src = cardLink;
   cardImage.alt = cardName;
 
   //листенеры
-  cardLikeButton.addEventListener('click', (evt) => {
+  buttonCardLike.addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__like-button_active');
   });
-  cardTrashButton.addEventListener('click', (evt) => {
+  buttonCardTrash.addEventListener('click', (evt) => {
     evt.target.closest('.element').remove();
   });
 
@@ -145,7 +143,7 @@ function uploadInitialCards(item) {
 initialCards.forEach(uploadInitialCards);
 
 //листенеры
-popUpAddButtonOpen.addEventListener('click', () => {
+buttonOpenPopUpAdd.addEventListener('click', () => {
   openPopUp(popUpAdd);
 });
 popUpAddForm.addEventListener('submit', (evt) => {
@@ -156,10 +154,6 @@ popUpAddForm.addEventListener('submit', (evt) => {
   addCardElement(newCard);
   closePopUp(popUpAdd);
   popUpAddForm.reset();
-  // не работает
-
-  /* disableSubmitButton(popUpAddButtonSubmit, validSet); */
-
-  /* popUpAddButtonSubmit.setAttribute('disabled', 'disabled');
-  popUpAddButtonSubmit.classList.add('popup__submit-button_disabled'); */
+  const buttonElement = popUpAddForm.querySelector('.popup__submit-button');
+  disableSubmitButton(buttonElement, validSet);
 });
