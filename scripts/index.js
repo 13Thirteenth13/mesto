@@ -4,10 +4,10 @@ const popUpAll = document.querySelectorAll('.popup');
 //поп ап редактирование профиля
 const popUpEdit = document.querySelector('.popup_type_edit-profile');
 //форма поп апа редактирования профиля
-const popUpEditForm = popUpEdit.querySelector('.popup__form');
+const editFormPopUp = popUpEdit.querySelector('.popup__form');
 //инпуты формы поп апа редактирования профиля
-const popUpEditInputName = popUpEditForm.querySelector('#name');
-const popUpEditInputDescription = popUpEditForm.querySelector('#description');
+const inputNamePopUpEdit = editFormPopUp.querySelector('#name');
+const inputDescriptionPopUpEdit = editFormPopUp.querySelector('#description');
 
 //секция profile
 const profile = document.querySelector('.profile');
@@ -23,10 +23,10 @@ const buttonOpenPopUpAdd = document.querySelector('.profile__add-button');
 //поп ап добавление карточки
 const popUpAdd = document.querySelector('.popup_type_new-element');
 //форма поп апа добавления карточки
-const popUpAddForm = popUpAdd.querySelector('.popup__form');
+const formPopUpAdd = popUpAdd.querySelector('.popup__form');
 //инпуты формы поп апа добавления карточки
-const popUpAddInputTitle = popUpAddForm.querySelector('#title');
-const popUpAddLinkInputLink = popUpAddForm.querySelector('#link');
+const inputTitlePopUpAdd = formPopUpAdd.querySelector('#title');
+const inputLinkPopUpAdd = formPopUpAdd.querySelector('#link');
 
 //секция elements
 const elementsSection = document.querySelector('.elements');
@@ -39,9 +39,9 @@ const cardTemplate = document.querySelector('.element-template').content;
 //поп ап просмотр изображения
 const popUpView = document.querySelector('.popup_type_view-image');
 //название изображения поп апа просмотра
-const popUpViewFigcaption = popUpView.querySelector('.popup__figcaption');
+const figcaptionPopUpView = popUpView.querySelector('.popup__figcaption');
 //изображение поп апа просмотра
-const popUpViewImage = popUpView.querySelector('.popup__image');
+const imagePopUpView = popUpView.querySelector('.popup__image');
 
 //открытие поп апа
 function openPopUp(popUp) {
@@ -75,14 +75,14 @@ popUpAll.forEach((popUp) => {
 //поп ап редактирование профиля
 //данные профиля в поп ап редактирования профиля
 function setProfileData() {
-  popUpEditInputName.value = profileName.textContent;
-  popUpEditInputDescription.value = profileDescription.textContent;
+  inputNamePopUpEdit.value = profileName.textContent;
+  inputDescriptionPopUpEdit.value = profileDescription.textContent;
 };
 //обработчик события сабмита поп апа редактирования профиля
 function submitProfileForm(evt) {
   evt.preventDefault();
-  profileName.textContent = popUpEditInputName.value;
-  profileDescription.textContent = popUpEditInputDescription.value;
+  profileName.textContent = inputNamePopUpEdit.value;
+  profileDescription.textContent = inputDescriptionPopUpEdit.value;
   closePopUp(popUpEdit);
 };
 //листенеры
@@ -90,7 +90,7 @@ buttonProfileEdit.addEventListener('click', () => {
   openPopUp(popUpEdit);
   setProfileData();
 });
-popUpEditForm.addEventListener('submit', submitProfileForm);
+editFormPopUp.addEventListener('submit', submitProfileForm);
 
 //поп ап добавление карточки
 //создание новой карточки
@@ -122,9 +122,9 @@ function createCard(cardName, cardLink) {
   //функция поп апа просмотра
   function openPopUpView() {
     openPopUp(popUpView);
-    popUpViewImage.src = cardImage.src;
-    popUpViewFigcaption.textContent = cardHeading.textContent;
-    popUpViewImage.alt = cardHeading.textContent;
+    imagePopUpView.src = cardImage.src;
+    figcaptionPopUpView.textContent = cardHeading.textContent;
+    imagePopUpView.alt = cardHeading.textContent;
   };
   // листенер
   cardImage.addEventListener('click', openPopUpView);
@@ -146,14 +146,14 @@ initialCards.forEach(uploadInitialCards);
 buttonOpenPopUpAdd.addEventListener('click', () => {
   openPopUp(popUpAdd);
 });
-popUpAddForm.addEventListener('submit', (evt) => {
+formPopUpAdd.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  const cardName = popUpAddInputTitle;
-  const cardLink = popUpAddLinkInputLink;
+  const cardName = inputTitlePopUpAdd;
+  const cardLink = inputLinkPopUpAdd;
   const newCard = createCard(cardName.value, cardLink.value);
   addCardElement(newCard);
   closePopUp(popUpAdd);
-  popUpAddForm.reset();
-  const buttonElement = popUpAddForm.querySelector('.popup__submit-button');
+  formPopUpAdd.reset();
+  const buttonElement = formPopUpAdd.querySelector('.popup__submit-button');
   disableSubmitButton(buttonElement, validSet);
 });
