@@ -1,13 +1,13 @@
 //Попапы
-const popUpAll = document.querySelectorAll('.popup');
+const popupAll = document.querySelectorAll('.popup');
 
 //поп ап редактирование профиля
-const popUpEdit = document.querySelector('.popup_type_edit-profile');
+const popupEdit = document.querySelector('.popup_type_edit-profile');
 //форма поп апа редактирования профиля
-const editFormPopUp = popUpEdit.querySelector('.popup__form');
+const editFormPopup = popupEdit.querySelector('.popup__form');
 //инпуты формы поп апа редактирования профиля
-const inputNamePopUpEdit = editFormPopUp.querySelector('#name');
-const inputDescriptionPopUpEdit = editFormPopUp.querySelector('#description');
+const inputNamePopupEdit = editFormPopup.querySelector('#name');
+const inputDescriptionPopupEdit = editFormPopup.querySelector('#description');
 
 //секция profile
 const profile = document.querySelector('.profile');
@@ -18,15 +18,15 @@ const profileName = profile.querySelector('.profile__name');
 //описание профиля
 const profileDescription = profile.querySelector('.profile__description');
 //кнопка поп ап добавление новой карточки
-const buttonOpenPopUpAdd = document.querySelector('.profile__add-button');
+const buttonOpenPopupAdd = document.querySelector('.profile__add-button');
 
 //поп ап добавление карточки
-const popUpAdd = document.querySelector('.popup_type_new-element');
+const popupAdd = document.querySelector('.popup_type_new-element');
 //форма поп апа добавления карточки
-const formPopUpAdd = popUpAdd.querySelector('.popup__form');
+const formPopupAdd = popupAdd.querySelector('.popup__form');
 //инпуты формы поп апа добавления карточки
-const inputTitlePopUpAdd = formPopUpAdd.querySelector('#title');
-const inputLinkPopUpAdd = formPopUpAdd.querySelector('#link');
+const inputTitlePopupAdd = formPopupAdd.querySelector('#title');
+const inputLinkPopupAdd = formPopupAdd.querySelector('#link');
 
 //секция elements
 const elementsSection = document.querySelector('.elements');
@@ -37,37 +37,37 @@ const cardsContainer = elementsSection.querySelector('.elements__cards');
 const cardTemplate = document.querySelector('.element-template').content;
 
 //поп ап просмотр изображения
-const popUpView = document.querySelector('.popup_type_view-image');
+const popupView = document.querySelector('.popup_type_view-image');
 //название изображения поп апа просмотра
-const figcaptionPopUpView = popUpView.querySelector('.popup__figcaption');
+const figcaptionPopupView = popupView.querySelector('.popup__figcaption');
 //изображение поп апа просмотра
-const imagePopUpView = popUpView.querySelector('.popup__image');
+const imagePopupView = popupView.querySelector('.popup__image');
 
 //открытие поп апа
-function openPopUp(popUp) {
-  popUp.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopUpEsc);
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
 };
 //закрытие поп апа
-function closePopUp(popUp) {
-  popUp.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopUpEsc);
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
 };
 //закрытие поп апа клавишей Esc
-function closePopUpEsc(evt) {
+function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
-    const openedPopUp = document.querySelector('.popup_opened');
-    closePopUp(openedPopUp);
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   };
 };
 //закрытие поп апа нажатием на кнопку закрытия или оверлей
-popUpAll.forEach((popUp) => {
-  popUp.addEventListener('mousedown', (evt) => {
+popupAll.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
-      closePopUp(popUp);
+      closePopup(popup);
     };
     if (evt.target.classList.contains('popup__close-button')) {
-      closePopUp(popUp);
+      closePopup(popup);
     };
   });
 });
@@ -75,22 +75,22 @@ popUpAll.forEach((popUp) => {
 //поп ап редактирование профиля
 //данные профиля в поп ап редактирования профиля
 function setProfileData() {
-  inputNamePopUpEdit.value = profileName.textContent;
-  inputDescriptionPopUpEdit.value = profileDescription.textContent;
+  inputNamePopupEdit.value = profileName.textContent;
+  inputDescriptionPopupEdit.value = profileDescription.textContent;
 };
 //обработчик события сабмита поп апа редактирования профиля
 function submitProfileForm(evt) {
   evt.preventDefault();
-  profileName.textContent = inputNamePopUpEdit.value;
-  profileDescription.textContent = inputDescriptionPopUpEdit.value;
-  closePopUp(popUpEdit);
+  profileName.textContent = inputNamePopupEdit.value;
+  profileDescription.textContent = inputDescriptionPopupEdit.value;
+  closePopup(popupEdit);
 };
 //листенеры
 buttonProfileEdit.addEventListener('click', () => {
-  openPopUp(popUpEdit);
+  openPopup(popupEdit);
   setProfileData();
 });
-editFormPopUp.addEventListener('submit', submitProfileForm);
+editFormPopup.addEventListener('submit', submitProfileForm);
 
 //поп ап добавление карточки
 //создание новой карточки
@@ -120,20 +120,22 @@ function createCard(cardName, cardLink) {
 
   //поп ап просмотр изображения
   //функция поп апа просмотра
-  function openPopUpView() {
-    openPopUp(popUpView);
-    imagePopUpView.src = cardImage.src;
-    figcaptionPopUpView.textContent = cardHeading.textContent;
-    imagePopUpView.alt = cardHeading.textContent;
+  function openPopupView() {
+    openPopup(popupView);
+    imagePopupView.src = cardImage.src;
+    figcaptionPopupView.textContent = cardHeading.textContent;
+    imagePopupView.alt = cardHeading.textContent;
   };
   // листенер
-  cardImage.addEventListener('click', openPopUpView);
+  cardImage.addEventListener('click', openPopupView);
 
   return cardElement;
 };
 
 //добавление новой карточки
-const addCardElement = (card) => cardsContainer.prepend(card);
+function addCardElement(card) {
+  cardsContainer.prepend(card);
+};
 
 //добавление 6 карточек из массива initialCards (расположение: scripts/initial-cards.js)
 function uploadInitialCards(item) {
@@ -143,17 +145,17 @@ function uploadInitialCards(item) {
 initialCards.forEach(uploadInitialCards);
 
 //листенеры
-buttonOpenPopUpAdd.addEventListener('click', () => {
-  openPopUp(popUpAdd);
+buttonOpenPopupAdd.addEventListener('click', () => {
+  openPopup(popupAdd);
 });
-formPopUpAdd.addEventListener('submit', (evt) => {
+formPopupAdd.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  const cardName = inputTitlePopUpAdd;
-  const cardLink = inputLinkPopUpAdd;
+  const cardName = inputTitlePopupAdd;
+  const cardLink = inputLinkPopupAdd;
   const newCard = createCard(cardName.value, cardLink.value);
   addCardElement(newCard);
-  closePopUp(popUpAdd);
-  formPopUpAdd.reset();
-  const buttonElement = formPopUpAdd.querySelector('.popup__submit-button');
+  closePopup(popupAdd);
+  formPopupAdd.reset();
+  const buttonElement = formPopupAdd.querySelector('.popup__submit-button');
   disableSubmitButton(buttonElement, validSet);
 });
