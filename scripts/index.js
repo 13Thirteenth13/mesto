@@ -101,6 +101,8 @@ function submitProfileForm(evt) {
 buttonProfileEdit.addEventListener('click', () => {
   inputNamePopupEdit.value = profileName.textContent;
   inputDescriptionPopupEdit.value = profileDescription.textContent;
+  profileValidator.resetValidation();
+  profileValidator.enableSubmitButton();
   openPopup(popupEdit);
 });
 
@@ -120,12 +122,14 @@ function addCard(cardData, cardSelector) {
 };
 
 //добавление 6 карточек
-initialCards.forEach(function (item) {
+initialCards.forEach((item) => {
   addCard(item, '.element-template');
 });
 
 //слушатель кнопки добавления новой карточки
 buttonPopupAdd.addEventListener('click', () => {
+  addCardValidator.resetValidation();
+  formPopupAdd.reset();
   openPopup(popupAdd);
 });
 

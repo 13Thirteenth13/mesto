@@ -45,7 +45,6 @@ export class FormValidator {
     this._buttonElement.disabled = true;
     this._buttonElement.classList.add(this._inactiveButtonClass);
   };
-
   enableSubmitButton() {
     this._buttonElement.disabled = false;
     this._buttonElement.classList.remove(this._inactiveButtonClass);
@@ -59,6 +58,14 @@ export class FormValidator {
       this.enableSubmitButton();
     };
   };
+
+  //очистить ошибки
+  resetValidation() {
+    this._inputList.forEach((inputElement) => {
+        this._hideInputError(inputElement);
+    });
+    this._toggleButtonState();
+}
 
   //слушатели на все инпуты
   _setEventListeners() {
