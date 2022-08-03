@@ -1,6 +1,9 @@
-import {popupView, imagePopupView, figcaptionPopupView} from './index.js';
-
-import{openPopup} from './index.js';
+import {
+  popupView,
+  imagePopupView,
+  figcaptionPopupView
+} from '../utils/constants.js';
+import{openPopup} from '../pages/index.js';
 
 export class Card {
   constructor(cardData, cardSelector) {

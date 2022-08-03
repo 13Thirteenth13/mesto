@@ -1,58 +1,23 @@
-import {FormValidator} from './FormValidator.js';
-import {Card} from './Card.js';
-import {initialCards} from './initial-cards.js';
-
-//Попапы
-const popupAll = document.querySelectorAll('.popup');
-
-//поп ап редактирование профиля
-const popupEdit = document.querySelector('.popup_type_edit-profile');
-//форма поп апа редактирования профиля
-const editFormPopup = popupEdit.querySelector('.popup__form');
-//инпуты формы поп апа редактирования профиля
-const inputNamePopupEdit = editFormPopup.querySelector('#name');
-const inputDescriptionPopupEdit = editFormPopup.querySelector('#description');
-
-//секция profile
-const profile = document.querySelector('.profile');
-//кнопка поп ап редактирования профиля
-const buttonProfileEdit = profile.querySelector('.profile__edit-button');
-//имя профиля
-const profileName = profile.querySelector('.profile__name');
-//описание профиля
-const profileDescription = profile.querySelector('.profile__description');
-//кнопка поп ап добавление новой карточки
-const buttonPopupAdd = document.querySelector('.profile__add-button');
-
-//поп ап добавление карточки
-const popupAdd = document.querySelector('.popup_type_new-element');
-//форма поп апа добавления карточки
-const formPopupAdd = popupAdd.querySelector('.popup__form');
-//инпуты формы поп апа добавления карточки
-const inputTitlePopupAdd = formPopupAdd.querySelector('#title');
-const inputLinkPopupAdd = formPopupAdd.querySelector('#link');
-
-//секция elements
-const elementsSection = document.querySelector('.elements');
-const elementsContainer = elementsSection.insertAdjacentHTML('afterbegin', `<ul class="elements__cards"></ul>`);
-const cardsContainer = elementsSection.querySelector('.elements__cards');
-
-//поп ап просмотр изображения
-export const popupView = document.querySelector('.popup_type_view-image');
-//название изображения поп апа просмотра
-export const figcaptionPopupView = popupView.querySelector('.popup__figcaption');
-//изображение поп апа просмотра
-export const imagePopupView = popupView.querySelector('.popup__image');
-
-//объект с валидируемыми селекторами
-const validSet = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
+import {
+  initialCards,
+  validSet,
+  popupEdit,
+  popupAdd,
+  popupAll,
+  buttonProfileEdit,
+  editFormPopup,
+  cardsContainer,
+  buttonPopupAdd,
+  formPopupAdd,
+  inputNamePopupEdit,
+  profileName,
+  inputDescriptionPopupEdit,
+  profileDescription,
+  inputTitlePopupAdd,
+  inputLinkPopupAdd
+} from '../utils/constants.js';
+import {FormValidator} from '../components/FormValidator.js';
+import {Card} from '../components/Card.js';
 
 //экземпляры валидации
 const profileValidator = new FormValidator(validSet, popupEdit);
