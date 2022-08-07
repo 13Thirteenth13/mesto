@@ -7,7 +7,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src', 'pages', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
+    filename: '[name].[contenthash].js',
     publicPath: '',
   },
   mode: 'development',
@@ -17,11 +17,17 @@ module.exports = {
     compress: true,
     port: 8080
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [{
         test: /\.js$/,
-        use: 'babel-loader',
-        exclude: '/node_modules/'
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
@@ -29,11 +35,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, {
+        use: [MiniCssExtractPlugin.loader,
+          {
             loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
+            options: { importLoaders: 1 },
           },
           'postcss-loader'
         ]

@@ -1,7 +1,7 @@
 {
   "name": "mesto",
   "version": "1.0.0",
-  "description": "Интерактивная веб-страница.",
+  "description": "Интерактивная веб-страница",
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist && webpack",
