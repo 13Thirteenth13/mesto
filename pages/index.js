@@ -29,7 +29,10 @@ const profile = new UserInfo({
 //поп ап редактирования профиля
 const popupEditProfile = new PopupWithForm(popupEdit, {
   handleSubmitForm: (formData) => {
-      profile.setUserInfo(formData);
+      profile.setUserInfo({
+        name: formData.name,
+        info: formData.info
+      });
       popupEditProfile.close();
   }
 });
@@ -53,7 +56,10 @@ buttonProfileEdit.addEventListener('click', () => {
 //поп ап добавления новой карточки
 const popupAddCard = new PopupWithForm(popupAdd, {
   handleSubmitForm: (formData) => {
-      cards.addItem(formData);
+      cards.addItem({
+        name: formData.title,
+        link: formData.link
+      });
       popupAddCard.close();
   }
 });
@@ -89,6 +95,7 @@ const cards = new Section({
       return card.createCard();
   }
 }, cardsContainer);
+
 cards.renderItems();
 
 //валидация
