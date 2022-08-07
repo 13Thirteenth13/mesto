@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(validSet, formElement) {
     this._formElement = formElement;
     this._inputSelector = validSet.inputSelector;
@@ -51,7 +51,7 @@ export class FormValidator {
   };
 
   //переключатель состояния кнопки сабмит
-  _toggleButtonState() {
+  toggleButtonState() {
     if (this._hasInvalidInput()) {
       this.disableSubmitButton();
     } else {
@@ -64,18 +64,18 @@ export class FormValidator {
     this._inputList.forEach((inputElement) => {
         this._hideInputError(inputElement);
     });
-    this._toggleButtonState();
+    this.toggleButtonState();
 }
 
   //слушатели на все инпуты
   _setEventListeners() {
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-    this._toggleButtonState();
+    this.toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState();
+        this.toggleButtonState();
       });
     });
   };

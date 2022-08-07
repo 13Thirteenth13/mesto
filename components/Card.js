@@ -1,44 +1,53 @@
-import {
-  popupView,
-  imagePopupView,
-  figcaptionPopupView
-} from '../utils/constants.js';
-import{openPopup} from '../pages/index.js';
-
-export class Card {
-  constructor(cardData, cardSelector) {
-    this._title = cardData.name;
-    this._link = cardData.link;
+export default class Card {
+  constructor({ data, handleCardClick }, cardSelector) {
+    this._title = data.name;
+    this._link = data.link;
     this._cardSelector = cardSelector;
-    this._cardTemplate = document.querySelector(this._cardSelector).content.querySelector('.element');
+    this.handleCardClick = handleCardClick;
+  };
+
+  _getTemplate() {
+    const cardTemplate = document
+      .querySelector(this._cardSelector)
+      .content
+      .querySelector('.element')
+      .cloneNode(true);
+
+    return cardTemplate;
+  };
+
+  _handleLikeButton() {
+    this._buttonLike.classList.toggle('element__like-button_active');
+  };
+
+  _handleDeleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
   };
 
   _setEventListeners() {
+    //слушатель переключатель лайка
+    this._cardElement.querySelector('.element__like-button').addEventListener('click', () => {
+      this._handleLikeButton();
+    });
     //слушатель удаление карточки
     this._cardElement.querySelector('.element__trash-button').addEventListener('click', () => {
-      this._cardElement.remove();
-    });
-    //слушатель переключатель лайка
-    this._buttonCardLike.addEventListener('click', (evt) => {
-      evt.target.classList.toggle('element__like-button_active');
+      this._handleDeleteCard();
     });
     //слушатель просмотр изображения
     this._cardImage.addEventListener('click', () => {
-      imagePopupView.src = this._link;
-      imagePopupView.alt = this._title;
-      figcaptionPopupView.textContent = this._title;
-      openPopup(popupView);
+      this.handleCardClick();
     });
   };
 
   createCard() {
-    this._cardElement = this._cardTemplate.cloneNode(true);
+    this._cardElement = this._getTemplate();
     this._cardImage = this._cardElement.querySelector('.element__image');
-    this._buttonCardLike = this._cardElement.querySelector('.element__like-button');
+    this._buttonLike = this._cardElement.querySelector('.element__like-button');
 
-    this._cardImage.title = this._cardElement.querySelector('.element__heading').textContent = this._title;
-    this._cardImage.src = this._cardImage.src = this._link;
-    this._cardImage.alt = this._cardImage.alt = this._title;
+    this._cardElement.querySelector('.element__heading').textContent = this._title;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._title;
 
     this._setEventListeners();
 
