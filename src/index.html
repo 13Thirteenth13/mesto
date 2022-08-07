@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
 
@@ -15,7 +14,7 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img src="./images/avatar.jpg" alt="Изображение профиля" class="profile__avatar">
+      <img src="<%=require(./images/avatar.jpg)%>" alt="Изображение профиля" class="profile__avatar">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <p class="profile__description">Исследователь океана</p>
@@ -39,11 +38,11 @@
       <h3 class="popup__heading">Редактировать профиль</h3>
       <form class="popup__form" name="edit-form">
         <fieldset class="popup__fieldset">
-          <input class="popup__input" name="name" id="name" type="text" placeholder="Имя" minlength="2"
-            maxlength="40" required>
+          <input class="popup__input" name="name" id="name" type="text" placeholder="Имя" minlength="2" maxlength="40"
+            required>
           <span class="popup__error name-error"></span>
-          <input class="popup__input" name="info" id="description" type="text" placeholder="О себе"
-            minlength="2" maxlength="200" required>
+          <input class="popup__input" name="info" id="description" type="text" placeholder="О себе" minlength="2"
+            maxlength="200" required>
           <span class="popup__error description-error"></span>
           <button class="popup__submit-button" type="submit">
             Сохранить
@@ -89,7 +88,6 @@
     </li>
   </template>
 
-  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>
