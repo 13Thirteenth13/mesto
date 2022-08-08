@@ -31,11 +31,8 @@ const profile = new UserInfo({
 //поп ап редактирования профиля
 const popupEditProfile = new PopupWithForm(popupEdit, {
   handleSubmitForm: (formData) => {
-      profile.setUserInfo({
-        name: formData.name,
-        info: formData.info
-      });
-      popupEditProfile.close();
+    profile.setUserInfo(formData);
+    popupEditProfile.close();
   }
 });
 
@@ -58,11 +55,8 @@ buttonProfileEdit.addEventListener('click', () => {
 //поп ап добавления новой карточки
 const popupAddCard = new PopupWithForm(popupAdd, {
   handleSubmitForm: (formData) => {
-      cards.addItem({
-        name: formData.title,
-        link: formData.link
-      });
-      popupAddCard.close();
+    cards.addItem(createNewCard(formData));
+    popupAddCard.close();
   }
 });
 
@@ -81,20 +75,21 @@ const popupViewImage = new PopupWithImage(popupView);
 //создание новой карточки
 const createNewCard = (data) => {
   const card = new Card({
-          data, handleCardClick: () => {
-            popupViewImage.open(data.name, data.link);
-          }
-      }, cardTemplate);
-  return card;
+    data, handleCardClick: () => {
+      popupViewImage.open(data.name, data.link);
+    }
+  }, cardTemplate);
+  const cardElement = card.createCard();
+  return cardElement;
 };
 
 popupViewImage.setEventListeners();
 
 //добавление 6 готовых карточек из массива
 const cards = new Section({
-  items: initialCards, renderer: (initialCards) => {
-      const card = createNewCard(initialCards);
-      return card.createCard();
+  items: initialCards,
+  renderer: (item) => {
+    cards.addItem(createNewCard(item));
   }
 }, cardsContainer);
 

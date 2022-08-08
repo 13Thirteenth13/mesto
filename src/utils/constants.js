@@ -17,6 +17,7 @@ export const buttonPopupAdd = document.querySelector('.profile__add-button');
 export const popupView = document.querySelector('.popup_type_view-image');
 //темплейт
 export const cardTemplate = '.element-template';
+//контейнер для карточек
 export const cardsContainer = '.elements__cards';
 
 //массив 6 карточек
