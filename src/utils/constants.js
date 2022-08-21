@@ -7,14 +7,25 @@ export const formPopupEdit = popupEdit.querySelector('.popup__form');
 //инпуты формы поп апа редактирования профиля
 export const inputNamePopupEdit = formPopupEdit.querySelector('#name');
 export const inputDescriptionPopupEdit = formPopupEdit.querySelector('#description');
+
 //поп ап добавление карточки
 export const popupAdd = document.querySelector('.popup_type_new-element');
 //форма поп апа добавления карточки
 export const formPopupAdd = popupAdd.querySelector('.popup__form');
-//кнопка поп ап добавление новой карточки
+//кнопка поп ап добавления новой карточки
 export const buttonPopupAdd = document.querySelector('.profile__add-button');
+
 //поп ап просмотр изображения
 export const popupView = document.querySelector('.popup_type_view-image');
+
+//поп ап редактирование аватара
+export const popupEditAvatar = document.querySelector('.popup_type_avatar');
+//кнопка поп ап редактирования аватара
+export const buttonEditAvatar = document.querySelector('.profile__edit-avatar-button');
+
+//поп ап подтверждение
+export const popupConfirm = document.querySelector('.popup_type_confirm');
+
 //темплейт
 export const cardTemplate = '.element-template';
 //контейнер для карточек

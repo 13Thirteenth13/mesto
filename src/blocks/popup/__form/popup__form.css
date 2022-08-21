@@ -1,5 +1,6 @@
 .popup__form {
   max-width: 358px;
+  width: 100%;
   margin: 15px 0 0;
   padding: 0;
   position: relative;

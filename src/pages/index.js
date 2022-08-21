@@ -7,11 +7,14 @@ import {
   formPopupAdd,
   buttonProfileEdit,
   buttonPopupAdd,
+  buttonEditAvatar,
   inputNamePopupEdit,
   inputDescriptionPopupEdit,
   popupEdit,
   popupAdd,
   popupView,
+  popupEditAvatar,
+  popupConfirm,
   cardTemplate,
   cardsContainer
 } from '../utils/constants.js';
@@ -20,6 +23,7 @@ import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import UserInfo from '../components/UserInfo.js';
 
 //экземпляр с данными профиля
@@ -77,6 +81,9 @@ const createNewCard = (data) => {
   const card = new Card({
     data, handleCardClick: () => {
       popupViewImage.open(data.name, data.link);
+    },
+    handleDeleteClick: () => {
+      popupConfirmDelete.open();
     }
   }, cardTemplate);
   const cardElement = card.createCard();
@@ -95,8 +102,31 @@ const cards = new Section({
 
 cards.renderItems();
 
+//поп ап редактирование аватара
+const popupEditUserAvatar = new PopupWithForm(popupEditAvatar, {
+  handleSubmitForm: (formData) => {
+    //
+    popupEditUserAvatar.close();
+  }
+
+});
+
+popupEditUserAvatar.setEventListeners();
+
+//обработчик кнопки поп апа редактирования аватара
+buttonEditAvatar.addEventListener('click', () => {
+  popupEditUserAvatar.open();
+  avatarValidator.toggleButtonState();
+  avatarValidator.resetValidation();
+});
+
+const popupConfirmDelete = new PopupWithConfirm(popupConfirm);
+
 //валидация
 const profileValidator = new FormValidator(validSet, formPopupEdit);
 const addCardValidator = new FormValidator(validSet, formPopupAdd);
+const avatarValidator = new FormValidator(validSet, popupEditAvatar);
 profileValidator.enableValidation();
 addCardValidator.enableValidation();
+avatarValidator.enableValidation();
+
