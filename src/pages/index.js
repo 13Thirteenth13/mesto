@@ -42,12 +42,10 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   });
 
 const cards = new Section({
-  items: [],
   renderer: (items) => {
-    const card = createNewCard(items);
-    cards.addItem(card);
+    cards.addItem(createNewCard(items));
   }
-}, cardsContainer);
+}, '.elements__cards');
 
 //экземпляр с данными профиля
 const profile = new UserInfo({
@@ -57,7 +55,8 @@ const profile = new UserInfo({
 });
 
 //поп ап редактирования профиля
-const popupEditProfile = new PopupWithForm(popupEdit, {
+const popupEditProfile = new PopupWithForm({
+  popupSelector: '.popup_type_edit-profile',
   handleSubmitForm: (data) => {
     popupEditProfile.renderLoading(true);
     api.updateUserInfo(data)
@@ -92,7 +91,8 @@ buttonProfileEdit.addEventListener('click', () => {
 });
 
 //поп ап редактирование аватара
-const popupEditUserAvatar = new PopupWithForm(popupEditAvatar, {
+const popupEditUserAvatar = new PopupWithForm({
+  popupSelector: '.popup_type_avatar',
   handleSubmitForm: (data) => {
     popupEditUserAvatar.renderLoading(true);
     api.updateAvatar(data)
@@ -119,7 +119,8 @@ buttonEditAvatar.addEventListener('click', () => {
 });
 
 //поп ап добавления новой карточки
-const popupAddCard = new PopupWithForm(popupAdd, {
+const popupAddCard = new PopupWithForm({
+  popupSelector: '.popup_type_new-element',
   handleSubmitForm: (data) => {
     popupAddCard.renderLoading(true);
     api.sendCard(data)
@@ -147,22 +148,14 @@ buttonPopupAdd.addEventListener('click', () => {
 });
 
 ////поп ап подтверждение удаления карточки
-const popupDeleteCard = new PopupWithConfirm(popupConfirm, {
-  handleSubmit: (data) => {
-    api.deleteCard(data)
-      .then(() => {
-        popupDeleteCard.close();
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
-})
+const popupDeleteCard = new PopupWithConfirm({
+  popupSelector: '.popup_type_confirm'
+});
 
 popupDeleteCard.setEventListeners();
 
 //поп ап просмотр изображения
-const popupViewImage = new PopupWithImage(popupView);
+const popupViewImage = new PopupWithImage({ popupSelector: '.popup_type_view-image' });
 
 popupViewImage.setEventListeners();
 
