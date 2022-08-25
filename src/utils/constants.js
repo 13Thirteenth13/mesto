@@ -28,11 +28,6 @@ export const buttonEditAvatar = document.querySelector('.profile__edit-avatar-bu
 //поп ап подтверждение
 export const popupConfirm = document.querySelector('.popup_type_confirm');
 
-//темплейт
-export const cardTemplate = '.element-template';
-//контейнер для карточек
-export const cardsContainer = '.elements__cards';
-
 //объект с валидируемыми селекторами
 export const validSet = {
   formSelector: '.popup__form',

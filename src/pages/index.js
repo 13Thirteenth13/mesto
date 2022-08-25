@@ -2,8 +2,7 @@ import './index.css';
 
 import {
   validSet, formPopupEdit, formPopupAdd, buttonProfileEdit, buttonPopupAdd,
-  buttonEditAvatar, inputNamePopupEdit, inputDescriptionPopupEdit, popupEdit, popupAdd,
-  popupView, popupEditAvatar, formPopupEditAvatar, popupConfirm, cardTemplate, cardsContainer
+  buttonEditAvatar, inputNamePopupEdit, inputDescriptionPopupEdit, formPopupEditAvatar
 } from '../utils/constants.js';
 import FormValidator from '../components/FormValidator.js';
 import Card from '../components/Card.js';
@@ -200,7 +199,7 @@ const createNewCard = (data) => {
           })
       }
     }
-  }, cardTemplate);
+  }, '.element-template');
   return card.createCard();
 };
 
